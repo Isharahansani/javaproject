@@ -10,20 +10,20 @@
  */
 import java.sql.*;
 import javax.swing.JOptionPane;
-public class Loading extends javax.swing.JFrame {
+public class Loading extends javax.swing.JFrame implements Runnable{
     Connection conn;
     ResultSet rs;
     PreparedStatement  pst;
     int s=0;
     Thread th;
 
-    /**
+    /** 
      * Creates new form Loading
      */
     public Loading() {
         super("Loading");
         initComponents();
-        conn=javaconnect.ConnecrDb();
+        th=new Thread((Runnable)this);
     }
     
     public void setUpLoading(){
@@ -33,7 +33,7 @@ public class Loading extends javax.swing.JFrame {
     
     public void run(){
         try{
-           for(int i=0;i<200;i--){
+           for(int i=0;i<=200;i++){
                s=s+1;
                int m=jProgressBar1.getMaximum();
                int v=jProgressBar1.getValue();
@@ -66,6 +66,7 @@ public class Loading extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,8 +75,6 @@ public class Loading extends javax.swing.JFrame {
         jProgressBar1.setStringPainted(true);
 
         jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\i\\Documents\\NetBeansProjects\\Trining_Managemeny_System\\img\\Untitled.jpg")); // NOI18N
-
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\Users\\i\\Documents\\NetBeansProjects\\Trining_Managemeny_System\\img\\12.jpg")); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel3.setText("Redirecting...");
@@ -112,13 +111,20 @@ public class Loading extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\i\\Documents\\NetBeansProjects\\Trining_Managemeny_System\\img\\UbTh.gif")); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jLabel4)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -126,10 +132,13 @@ public class Loading extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(36, Short.MAX_VALUE))
         );
 
-        pack();
+        setSize(new java.awt.Dimension(466, 435));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -171,6 +180,7 @@ public class Loading extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     // End of variables declaration//GEN-END:variables

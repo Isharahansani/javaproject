@@ -20,7 +20,7 @@ public class javaconnect {
     public static Connection ConnecrDb(){
         try{
             Class.forName("org.sqlite.JDBC");
-            Connection conn=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\i\\Documents\\NetBeansProjects\\Trining_Managemeny_System\\tms.sqlite");
+            Connection conn=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\i\\Documents\\NetBeansProjects\\java.sqlite");
             return conn;
         }catch(Exception e){
             JOptionPane.showMessageDialog(null, e);

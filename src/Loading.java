@@ -42,7 +42,7 @@ public class Loading extends javax.swing.JFrame implements Runnable{
                }else{
                    i=201;
                    setVisible(false);
-                   Home ob=new Home();
+                   Home1 ob=new Home1();
                    ob.setVisible(true);
                }
                Thread.sleep(50);
